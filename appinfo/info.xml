@@ -8,6 +8,6 @@
     <author>Your Name</author>
     <namespace>ActivityTimeCalculator</namespace>
     <dependencies>
-        <nextcloud min-version="25" max-version="28" />
+        <nextcloud min-version="25" max-version="35" />
     </dependencies>
 </info>
