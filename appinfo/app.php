@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright Copyright (c) 2024 Il Tuo Nome
+ * @copyright Copyright (c) 2024 Your Name
  * @license GNU AGPL version 3 or any later version
  */
 
@@ -20,8 +20,8 @@ class Application extends App implements IBootstrap {
 
     public function register(IRegistrationContext $context): void {
         // Register controllers
-        $context->registerController('PageController');
-        $context->registerController('ApiController');
+        $context->registerController(\OCA\ActivityTimeCalculator\Controller\PageController::class);
+        $context->registerController(\OCA\ActivityTimeCalculator\Controller\ApiController::class);
     }
 
     public function boot(IBootContext $context): void {}
