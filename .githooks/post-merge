@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "🔧 Sistemazione automatica permessi..."
+
+# Permessi NAS
+sudo chown -R 33:33 /volume1/docker/nextcloud/html/apps/activitytimecalculator/
+sudo chmod -R 755 /volume1/docker/nextcloud/html/apps/activitytimecalculator/
+
+# Permessi container Docker
+sudo docker exec nextcloud-app chown -R www-data:www-data /var/www/html/apps/activitytimecalculator/ 2>/dev/null
+sudo docker exec nextcloud-app chmod -R 755 /var/www/html/apps/activitytimecalculator/ 2>/dev/null
+
+# Abilita app
+sudo docker exec nextcloud-app php occ app:enable activitytimecalculator --force 2>/dev/null
+
+echo "✅ Permessi sistemati e app abilitata!"
