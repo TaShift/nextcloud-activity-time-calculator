@@ -1,0 +1,54 @@
+# Dependencies
+/vendor/
+/composer.lock
+/node_modules/
+/package-lock.json
+/yarn.lock
+
+# Build artifacts
+/build/
+/dist/
+/.build/
+/apps/*/css/
+/apps/*/js/
+
+# IDE
+/.vscode/
+/.idea/
+/.vs/
+/nbproject/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+/.cache/
+/.phpunit.result.cache
+
+# Environment
+/.env
+.env.local
+.env.prod
+
+# Temporary files
+*~
+*.tmp
+*.temp
+
+# Test coverage
+/coverage/
+/.scrutinizer.yml
+/.travis.yml
+.codecov.yml
+
+# AppStore package
+/*.tar.gz
+/*.zip
