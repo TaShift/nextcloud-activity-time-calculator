@@ -17,3 +17,22 @@ cd nextcloud/apps/
 git clone https://github.com/your-username/nextcloud-activity-time-calculator.git activitytimecalculator
 ##  ENABLE THE APP
 ./occ app:enable activitytimecalculator
+
+## **2. COMANDI PER REINSTALLARE**
+
+```bash
+# Dal NAS via SSH:
+cd /volume1/docker/nextcloud/html/apps/
+
+# Elimina la vecchia versione
+sudo rm -rf activitytimecalculator
+
+# Clona la nuova versione da GitHub
+sudo git clone https://github.com/TaShift/nextcloud-activity-time-calculator.git activitytimecalculator
+
+# Imposta permessi
+sudo chown -R 33:33 activitytimecalculator/
+sudo chmod -R 755 activitytimecalculator/
+
+# Abilita l'app
+docker exec -it nextcloud-app php occ app:enable activitytimecalculator
