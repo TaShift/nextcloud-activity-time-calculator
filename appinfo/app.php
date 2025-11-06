@@ -24,5 +24,7 @@ class Application extends App implements IBootstrap {
         $context->registerController(\OCA\ActivityTimeCalculator\Controller\ApiController::class);
     }
 
-    public function boot(IBootContext $context): void {}
+    public function boot(IBootContext $context): void {
+        // Boot logic if needed
+    }
 }
