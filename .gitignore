@@ -52,3 +52,11 @@ npm-debug.log*
 # AppStore package
 /*.tar.gz
 /*.zip
+
+# Scripts (if you want to exclude shell scripts from Git)
+*.sh
+
+# But keep these specific scripts (remove the *.sh line above if you want to keep scripts)
+#!install-hook.sh
+#!setup-nas.sh
+#!update-app.sh
