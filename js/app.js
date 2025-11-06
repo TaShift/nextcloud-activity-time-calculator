@@ -1,3 +1,4 @@
+sudo tee js/app.js > /dev/null << 'EOF'
 /**
  * Activity Time Calculator - Plain JavaScript Version
  */
@@ -117,3 +118,4 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial render
     render();
 });
+EOF
