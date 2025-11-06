@@ -20,7 +20,7 @@
     <navigations>
         <navigation>
             <name>Activity Time</name>
-            <route>activity_time_calculator.page.index</route>
+            <route>activitytimecalculator.page.index</route>
             <order>10</order>
             <icon>icon-category-office</icon>
         </navigation>
