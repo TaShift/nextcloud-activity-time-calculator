@@ -3,11 +3,29 @@
     <id>activitytimecalculator</id>
     <name>Activity Time Calculator</name>
     <summary>Calculate activity time from calendar events</summary>
+    <description>Analyzes your calendar events and shows how much time you spend on different activities based on event categories.</description>
     <version>0.1.0</version>
     <licence>agpl</licence>
-    <author>TaShift</author>
+    <author>Your Name</author>
     <namespace>ActivityTimeCalculator</namespace>
+    
+    <category>tools</category>
+    
+    <website>https://github.com/TaShift/nextcloud-activity-time-calculator</website>
+    
     <dependencies>
-        <nextcloud min-version="25" max-version="35" />
+        <nextcloud min-version="31" max-version="31" />
     </dependencies>
+    
+    <navigations>
+        <navigation>
+            <name>Activity Time</name>
+            <route>activity_time_calculator.page.index</route>
+            <order>10</order>
+            <icon>icon-category-office</icon>
+        </navigation>
+    </navigations>
+
+    <screenshot>https://raw.githubusercontent.com/TaShift/nextcloud-activity-time-calculator/main/screenshots/app.png</screenshot>
+    <screenshot>https://raw.githubusercontent.com/TaShift/nextcloud-activity-time-calculator/main/screenshots/dashboard.png</screenshot>
 </info>
