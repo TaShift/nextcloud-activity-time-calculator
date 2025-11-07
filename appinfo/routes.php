@@ -7,6 +7,6 @@
 return [
     'routes' => [
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-        ['name' => 'api#getActivityData', 'url' => '/api/activity-data', 'verb' => 'GET'],
+        ['name' => 'page#calculateTime', 'url' => '/api/calculate-time', 'verb' => 'GET'],
     ]
 ];

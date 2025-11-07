@@ -1,15 +1,11 @@
 <?php
-/**
- * @copyright Copyright (c) 2024 Your Name
- * @license GNU AGPL version 3 or any later version
- */
 
 namespace OCA\ActivityTimeCalculator\AppInfo;
 
 use OCP\AppFramework\App;
-use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\AppFramework\Bootstrap\IBootContext;
 use OCP\AppFramework\Bootstrap\IBootstrap;
+use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
 class Application extends App implements IBootstrap {
     public const APP_ID = 'activitytimecalculator';
@@ -19,12 +15,14 @@ class Application extends App implements IBootstrap {
     }
 
     public function register(IRegistrationContext $context): void {
-        // Register controllers
-        $context->registerController(\OCA\ActivityTimeCalculator\Controller\PageController::class);
-        $context->registerController(\OCA\ActivityTimeCalculator\Controller\ApiController::class);
+        // Registra i file statici
+        $context->registerService('JSFileService', function($c) {
+            return new \OCP\AppFramework\Services\InitialStateProvider(
+                $c->query('ServerContainer')->getURLGenerator()
+            );
+        });
     }
 
     public function boot(IBootContext $context): void {
-        // Boot logic if needed
     }
 }

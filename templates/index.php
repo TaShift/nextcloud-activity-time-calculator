@@ -1,43 +1,36 @@
 <?php
-/** @var \OCP\IURLGenerator $urlGenerator */
-/** @var array $_ */
+// Simple form processing
+$startDate = $_GET['startDate'] ?? '';
+$endDate = $_GET['endDate'] ?? '';
+$results = '';
 
-script('activitytimecalculator', 'app');
-style('activitytimecalculator', 'style');
+if ($startDate && $endDate) {
+    // Mock data for now - we'll add real calendar later
+    $results = "
+        <h3>Time by Category (Mock Data):</h3>
+        <ul>
+            <li><strong>Work:</strong> 34h 45m</li>
+            <li><strong>Meetings:</strong> 12h 20m</li>
+            <li><strong>Personal:</strong> 8h 15m</li>
+            <li><strong>Development:</strong> 22h 30m</li>
+        </ul>
+        <p><em>Calendar integration coming soon for dates: $startDate to $endDate</em></p>
+    ";
+}
 ?>
 
-<div id="activity-time-app" class="section">
+<div class="activity-time-calculator">
     <h2>Activity Time Calculator</h2>
     
-    <div class="date-selector">
-        <label for="start-date">From:</label>
-        <input type="date" id="start-date" v-model="startDate">
-        
-        <label for="end-date">To:</label>
-        <input type="date" id="end-date" v-model="endDate">
-        
-        <button @click="loadData" :disabled="loading" class="primary">
-            {{ loading ? 'Loading...' : 'Calculate' }}
-        </button>
+    <div class="date-filters">
+        <form method="GET" action="">
+            <label>Start Date: <input type="date" name="startDate" value="<?php echo htmlspecialchars($startDate) ?>"></label>
+            <label>End Date: <input type="date" name="endDate" value="<?php echo htmlspecialchars($endDate) ?>"></label>
+            <button type="submit">Calculate Time</button>
+        </form>
     </div>
 
-    <div v-if="error" class="error-message">{{ error }}</div>
-    
-    <div v-if="Object.keys(data).length > 0" class="results-section">
-        <h3>Results</h3>
-        <div class="results-table">
-            <div class="table-header">
-                <span>Category</span>
-                <span>Time</span>
-            </div>
-            <div v-for="(seconds, category) in data" :key="category" class="table-row">
-                <span class="category-name">{{ category }}</span>
-                <span class="time-display">{{ formatTime(seconds) }}</span>
-            </div>
-        </div>
-    </div>
-
-    <div v-else-if="!loading" class="welcome-message">
-        <p>Select a date range and click "Calculate" to analyze your calendar activities.</p>
+    <div id="results" style="margin-top: 20px; padding: 15px; border: 1px solid #ccc; border-radius: 5px;">
+        <?php echo $results ?: '<p>Select date range and click Calculate Time</p>'; ?>
     </div>
 </div>

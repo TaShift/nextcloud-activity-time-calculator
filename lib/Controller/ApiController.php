@@ -4,33 +4,36 @@ namespace OCA\ActivityTimeCalculator\Controller;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;
+use OCA\ActivityTimeCalculator\Service\ActivityTimeService;
 
 class ApiController extends Controller {
-    public function __construct($appName, IRequest $request) {
+    private $activityTimeService;
+    private $userId;
+
+    public function __construct($appName, IRequest $request, ActivityTimeService $activityTimeService, $userId) {
         parent::__construct($appName, $request);
+        $this->activityTimeService = $activityTimeService;
+        $this->userId = $userId;
     }
 
     /**
      * @NoAdminRequired
      */
     public function getActivityData($startDate, $endDate) {
-        // Return mock data for now - we'll add calendar integration later
-        $sampleData = [
-            'Work' => 125400,
-            'Meeting' => 72000, 
-            'Personal' => 54000,
-            'Sports' => 18000,
-            'Development' => 86400
-        ];
-
-        return new DataResponse([
-            'status' => 'success',
-            'data' => $sampleData,
-            'message' => 'Sample data - calendar integration coming soon',
-            'metadata' => [
-                'dateRange' => $startDate . ' to ' . $endDate,
-                'totalCategories' => count($sampleData)
-            ]
-        ]);
+        $result = $this->activityTimeService->calculateActivityTime($startDate, $endDate);
+        
+        if ($result['success']) {
+            return new DataResponse([
+                'status' => 'success',
+                'data' => $result['data'],
+                'message' => 'Calendar data retrieved successfully'
+            ]);
+        } else {
+            return new DataResponse([
+                'status' => 'error',
+                'error' => $result['error'],
+                'message' => 'Failed to retrieve calendar data'
+            ], 500);
+        }
     }
 }

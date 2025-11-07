@@ -15,6 +15,7 @@
     
     <dependencies>
         <nextcloud min-version="31" max-version="31" />
+		<php min-version="8.0"/>
     </dependencies>
     
     <navigations>
