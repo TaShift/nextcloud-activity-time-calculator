@@ -27,6 +27,14 @@
         </navigation>
     </navigations>
 
+	    <background-jobs>
+        <job>OCA\ActivityTimeCalculator\Cron\ReportCron</job>
+    </background-jobs>
+
+	    <settings>
+        <admin>OCA\ActivityTimeCalculator\Settings\Admin</admin>
+    </settings>
+
     <screenshot>https://raw.githubusercontent.com/TaShift/nextcloud-activity-time-calculator/main/screenshots/app.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/TaShift/nextcloud-activity-time-calculator/main/screenshots/dashboard.png</screenshot>
 </info>
