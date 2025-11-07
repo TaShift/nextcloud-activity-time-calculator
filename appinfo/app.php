@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OCA\ActivityTimeCalculator\AppInfo;
 
 use OCP\AppFramework\App;
@@ -15,14 +17,27 @@ class Application extends App implements IBootstrap {
     }
 
     public function register(IRegistrationContext $context): void {
-        // Registra i file statici
-        $context->registerService('JSFileService', function($c) {
-            return new \OCP\AppFramework\Services\InitialStateProvider(
-                $c->query('ServerContainer')->getURLGenerator()
+        // Register controllers
+        $context->registerService('ApiController', function($c) {
+            return new \OCA\ActivityTimeCalculator\Controller\ApiController(
+                $c->query('AppName'),
+                $c->query('Request'),
+                $c->query('UserSession'),
+                $c->query('ReportService')
+            );
+        });
+        
+        // Register services
+        $context->registerService('ReportService', function($c) {
+            return new \OCA\ActivityTimeCalculator\Service\ReportService(
+                $c->query('Config'),
+                $c->query('UserManager'),
+                $c->query('CalendarManager')
             );
         });
     }
 
     public function boot(IBootContext $context): void {
+        // Boot logic if needed
     }
 }
