@@ -1,12 +1,14 @@
 <?php
-/**
- * @copyright Copyright (c) 2024 Your Name
- * @license GNU AGPL version 3 or any later version
- */
+
+declare(strict_types=1);
 
 return [
     'routes' => [
+        // Pagina principale
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-        ['name' => 'page#calculateTime', 'url' => '/api/calculate-time', 'verb' => 'GET'],
+        
+        // API endpoints
+        ['name' => 'api#getCalendarEvents', 'url' => '/api/events', 'verb' => 'GET'],
+        ['name' => 'api#generateReport', 'url' => '/api/report', 'verb' => 'GET'],
     ]
 ];
