@@ -1,8 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) 2024 Il Tuo Nome
- * @license GNU AGPL version 3 or any later version
- */
 
 declare(strict_types=1);
 
@@ -13,7 +9,7 @@ use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IRequest;
 
 class PageController extends Controller {
-    
+
     public function __construct(string $appName, IRequest $request) {
         parent::__construct($appName, $request);
     }
@@ -23,8 +19,6 @@ class PageController extends Controller {
      * @NoCSRFRequired
      */
     public function index(): TemplateResponse {
-        return new TemplateResponse('activitytimecalculator', 'index', [
-            'appName' => 'activitytimecalculator'
-        ]);
+        return new TemplateResponse('activitytimecalculator', 'dashboard', []);
     }
 }
